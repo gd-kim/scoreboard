@@ -2,14 +2,14 @@ import React from "react";
 
 export class Counter extends React.Component {
   //클래스 바로 아래에 선언되는 변수는 속성이 된다.
-  constructor() {
+ /* constructor() {
     super();
     this.state = {
       score: 0
     };
 
     this.handleChange.bind(this);
-  }
+  }*/
   handleChange(delta){
     this.setState(prevState=>{
       return {score:prevState.score+delta } //비동기로 동작
