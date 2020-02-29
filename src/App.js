@@ -22,12 +22,16 @@ class App extends React.Component {
   handleChangeScore = (id, delta)=> {
     console.log('changeScore: ', id, delta);
     this.setState(prevState=>{
-      prevState.players.forEach(player => {
+
+      // 원본을 건들지 않기 위해 디카피 함.
+      const players = [...prevState.players];
+
+      players.forEach(player => {
         if (player.id === id){
           player.score += delta;
         }
       });
-      return {players: [...prevState.players]}
+      return {players: players};
     });
    };
   render() {
