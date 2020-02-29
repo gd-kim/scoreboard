@@ -2,13 +2,13 @@ import React from "react";
 
 export class Counter extends React.Component {
   // 클래스 바로 아래에 선언되는 변수는 속성이 된다.
-  /*  constructor() {
-      super();
-      this.state = {
-        score: 0
-      }
-      // this.handleChange.bind(this);
-    }*/
+/*  constructor() {
+    super();
+    this.state = {
+      score: 0
+    }
+    // this.handleChange.bind(this);
+  }*/
 
   handleChange = (delta) => {
     console.log(this); // arrow function 에서의 this 는 lexical this가된다.
@@ -22,9 +22,13 @@ export class Counter extends React.Component {
   render() {
     return (
       <div className="counter">
-        <button className="counter-action decrement" onClick={()=> this.props.changeScore(this.props.id, -1)}> - </button>
-        <span className="counter-score">{this.props.score}</span>
-        <button className="counter-action increment" onClick={() =>this.props.changeScore(this.props.id, 1)}> + </button>
+        <div className="counter">
+          <button className="counter-action decrement"
+                  onClick={() => this.props.changeScore(this.props.id, -1)}> - </button>
+          <span className="counter-score">{this.props.score}</span>
+          <button className="counter-action increment"
+                  onClick={() => this.props.changeScore(this.props.id, 1)}> + </button>
+        </div>
       </div>
     );
   }
