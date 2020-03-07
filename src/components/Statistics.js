@@ -2,11 +2,11 @@ import React from 'react';
 import _ from 'lodash';
 
 export const Statistics = (props) => {
-  let totalScore = _.sumBy(props.players, 'score');
+  let totlaPoint = _.sumBy(props.players, 'score');
   // 로직 구현
-  /*props.players.forEach(item => {
-    totalScore += item.score
-  });*/
+  // props.players.forEach(item => {
+  //   totlaPoint += item.score
+  // });
   let totalPlayer = props.players.length;
 
   return (
@@ -18,7 +18,7 @@ export const Statistics = (props) => {
       </tr>
       <tr>
         <td>Total Points:</td>
-        <td>{totalScore}</td>
+        <td>{totlaPoint}</td>
       </tr>
       </tbody>
     </table>

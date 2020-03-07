@@ -1,6 +1,8 @@
 import React from "react";
+import {changeScore} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class Counter extends React.Component {
+class Counter extends React.Component {
   // 클래스 바로 아래에 선언되는 변수는 속성이 된다.
 /*  constructor() {
     super();
@@ -33,3 +35,10 @@ export class Counter extends React.Component {
     );
   }
 }
+
+const mapActionToProps = (dispatch) => ({
+  // 왼쪽은 props, 오른쪽은 펑션
+  changeScore: (id, delta) => dispatch(changeScore(id, delta))
+})
+
+export default connect(null, mapActionToProps)(Counter)
