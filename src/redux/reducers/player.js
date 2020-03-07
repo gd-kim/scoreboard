@@ -11,7 +11,7 @@ const playerInitialState = {
 let maxId = 4;
 
 export const player = (state = playerInitialState, action) => {
-  let players;
+  let players = null;
   switch(action.type) {
     case ADD_PLAYER:
       // 기존 배열을 deep copy하여 새로운 배열을 생성
@@ -37,11 +37,13 @@ export const player = (state = playerInitialState, action) => {
         players
       }
     case REMOVE_PLAYER:
-      let players = state.players.filter(player => player.id !== action.id);
+      players = state.players.filter(player => player.id !== action.id);
       return {
         ...state,
         players
       }
+
+
   }
 
   return state;

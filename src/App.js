@@ -1,21 +1,26 @@
 import React from 'react';
 import {Header} from './components/Header';
 import './App.css';
-import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
+import {CustomPlayer} from "./components/CustomPlayer";
+import _ from 'lodash';
 
-let maxId = 4;
+function App() {
+  const players = useSelector(state => state.player.players);
 
-function App(props) {
-
+  const getHighscore = () => {
+    const highscore =  _.maxBy(players, 'score').score;
+    return highscore ? highscore : null;
+  }
   return (
     <div className="scoreboard">
-      <Header title="My Scoreboard" players={props.players}/>
+      <Header title="My Scoreboard" players={players}/>
 
       {
-        props.players.map(player => (
-          <Player name={player.name} score={player.score} id={player.id} key={player.id}
+        players.map(player => (
+          <CustomPlayer name={player.name} score={player.score} id={player.id} key={player.id}
+                        isHighScore={getHighscore() === player.score}
           />
         ))
       }
@@ -23,12 +28,6 @@ function App(props) {
       <AddPlayerForm></AddPlayerForm>
     </div>
   );
-
 }
 
-const mapStateToProps = (state) => ({
-  // 왼쪽은 props, 오른쪽은 store의 state
-  players: state.player.players
-});
-
-export default connect(mapStateToProps, null)(App);
+export default App;
